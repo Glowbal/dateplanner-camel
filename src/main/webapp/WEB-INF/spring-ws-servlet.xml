@@ -8,16 +8,16 @@
 
     <!-- === Route(s) ==== -->
     <camel:camelContext id="camelContext">
-        <camel:routeBuilder ref="applyRegistrationRoute"/>
+        <camel:routeBuilder ref="datePlannerRoute"/>
     </camel:camelContext>
 
-    <bean id="applyRegistrationRoute" class="nl.han.dare2date.service.web.applyregistration.ApplyRegistrationRoute"/>
+    <bean id="datePlannerRoute" class="nl.han.dateplanner.services.orchestration.DatePlannerService"/>
 
     <!-- === Endpoint mapping(s) ==== -->
-    <bean id="applyRegistrationEndpointMapping" class="org.apache.camel.component.spring.ws.bean.CamelEndpointMapping">
+    <bean id="datePlannerEndpointMapping" class="org.apache.camel.component.spring.ws.bean.CamelEndpointMapping">
         <property name="interceptors">
             <list>
-                <ref bean="applyRegistrationValidatingInterceptor"/>
+                <ref bean="datePlannerValidatingInterceptor"/>
                 <ref bean="loggingInterceptor"/>
             </list>
         </property>
@@ -26,22 +26,22 @@
     <!-- === Interceptors ==== -->
     <bean id="loggingInterceptor" class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor"/>
 
-    <bean id="applyRegistrationValidatingInterceptor"
+    <bean id="datePlannerValidatingInterceptor"
           class="org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor">
-        <property name="schema" value="/WEB-INF/applyregistrationservice/applyregistration.xsd"/>
+        <property name="schema" value="/WEB-INF/dateplanner.xsd"/>
         <property name="validateRequest" value="true"/>
         <property name="validateResponse" value="true"/>
     </bean>
 
     <!-- === WSDL exposure ==== -->
-    <bean id="applyregistration" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition">
+    <bean id="dateplanner" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition">
         <property name="schema">
-            <bean id="applyregistration_xsd" class="org.springframework.xml.xsd.SimpleXsdSchema">
-                <property name="xsd" value="/WEB-INF/applyregistrationservice/applyregistration.xsd"/>
+            <bean class="org.springframework.xml.xsd.SimpleXsdSchema">
+                <property name="xsd" value="/WEB-INF/dateplanner.xsd"/>
             </bean>
         </property>
-        <property name="portTypeName" value="applyregistration"/>
-        <property name="locationUri" value="http://localhost:8080/applyregistration"/>
+        <property name="portTypeName" value="dateplanner"/>
+        <property name="locationUri" value="http://localhost:8080/dateplanner"/>
     </bean>
 
     <!--
