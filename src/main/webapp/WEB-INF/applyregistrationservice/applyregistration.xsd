@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.han.nl/schemas/dateplanner"
+        xmlns:tns="http://www.han.nl/schemas/dateplanner"
+        elementFormDefault="qualified">
+
+    <simpleType name="DayParts">
+        <restriction base="NCName">
+            <enumeration value="morning"/>
+            <enumeration value="day"/>
+            <enumeration value="evening"/>
+            <enumeration value="night"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="PlaceTypes">
+        <restriction base="NCName">
+            <enumeration value="amusement_park"/>
+            <enumeration value="aquarium"/>
+            <enumeration value="bar"/>
+            <enumeration value="bowling_alley"/>
+            <enumeration value="cafe"/>
+            <enumeration value="casino"/>
+            <enumeration value="library"/>
+            <enumeration value="movie_theater"/>
+            <enumeration value="museum"/>
+            <enumeration value="night_club"/>
+            <enumeration value="park"/>
+            <enumeration value="restaurant"/>
+            <enumeration value="spa"/>
+            <enumeration value="zoo"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="DateOptions">
+        <sequence>
+            <element name="location" type="string" minOccurs="1" maxOccurs="1"/>
+            <element name="radius" type="decimal" minOccurs="1" maxOccurs="1"/>
+            <element name="dayPart" type="tns:DayParts" minOccurs="1" maxOccurs="1"/>
+            <element name="types" type="tns:PlaceTypes" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="ForecastType">
+        <sequence>
+            <element name="temperature" type="float"/>
+            <element name="minTemperature" type="float"/>
+            <element name="maxTemperature" type="float"/>
+            <element name="rain" type="float"/>
+            <element name="snow" type="float"/>
+            <element name="clouds" type="float"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="PlaceType">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="placeId" type="string"/>
+            <element name="latitude" type="decimal"/>
+            <element name="longitude" type="decimal"/>
+            <element name="type" type="string"/>
+            <element name="vicinity" type="string"/>
+            <element name="openingHours" type="string"/>
+            <element name="date" type="dateTime"/>
+            <element name="forecast" type="tns:ForecastType" minOccurs="1" maxOccurs="1"/>
+        </sequence>
+    </complexType>
+
+    <element name="DatePlannerRequest">
+        <complexType>
+            <sequence>
+                <element name="input" type="tns:DateOptions" minOccurs="1" maxOccurs="1"/>
+            </sequence>
+        </complexType>
+    </element>
+
+    <element name="DatePlannerResponse">
+        <complexType>
+            <sequence>
+                <element name="places" type="tns:PlaceType" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>
