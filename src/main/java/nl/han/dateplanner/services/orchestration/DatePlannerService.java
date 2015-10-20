@@ -5,9 +5,9 @@
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
  * the License.  You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,10 +19,15 @@ package nl.han.dateplanner.services.orchestration;
 import nl.han.dateplanner.DatePlannerRequest;
 import nl.han.dateplanner.DatePlannerResponse;
 import nl.han.dateplanner.services.business.DateTaskFactory;
+import nl.han.dateplanner.services.business.IDateTaskService;
 import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
+
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 
 /**
  * When you run this route, messages can be obtained from two sources:
@@ -37,22 +42,33 @@ public class DatePlannerService extends RouteBuilder {
     public void configure() throws Exception {
         JaxbDataFormat jaxb = new JaxbDataFormat(DatePlannerResponse.class.getPackage().getName());
 
-        from("file://inbox")
-                .from("spring-ws:rootqname:{http://www.han.nl/schemas/dateplanner}DatePlannerRequest?endpointMapping=#datePlannerEndpointMapping")
-                    .unmarshal(jaxb).
-                            log("${body}").
-                                process(new Echo())
-                                    .marshal(jaxb);
+        from("spring-ws:rootqname:{http://www.han.nl/schemas/dateplanner}DatePlannerRequest?endpointMapping=#datePlannerEndpointMapping")
+            .unmarshal(jaxb)
+                .log(LoggingLevel.DEBUG, "nl.han.dateplanner", "Processing ${body}")
+                .process(new Echo())
+                .process(new JSONParser())
+            .marshal(jaxb);
     }
 
     private static final class Echo implements Processor {
+        @Override
         public void process(Exchange exchange) throws Exception {
-
             DatePlannerRequest request = exchange.getIn().getBody(DatePlannerRequest.class);
 
-            // TODO Dependency injection
-            nl.han.dateplanner.services.business.IDateTaskService task = new DateTaskFactory().create();
+            IDateTaskService task = new DateTaskFactory().create();
             exchange.getOut().setBody(task.getDateOption(request.getInput()));
+        }
+    }
+
+    private static final class JSONParser implements Processor {
+        @Override
+        public void process(Exchange exchange) throws Exception {
+            DatePlannerResponse datePlannerResponse = exchange.getIn().getBody(DatePlannerResponse.class);
+
+            BufferedWriter logger = new BufferedWriter(new OutputStreamWriter(System.out));
+
+            logger.write("Number of places: " + datePlannerResponse.getPlaces().size());
+            logger.close();
         }
     }
 }
