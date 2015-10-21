@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:camel="http://camel.apache.org/schema/spring"
-       xsi:schemaLocation="
-         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:camel="http://camel.apache.org/schema/spring"
+        xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <!-- === Route(s) ==== -->
     <camel:camelContext id="camelContext">
@@ -44,7 +44,6 @@
         <property name="locationUri" value="http://localhost:8080/dateplanner"/>
     </bean>
 
-
     <bean id="myLoggingEventNotifier" class="nl.han.dateplanner.services.orchestration.MyLoggingSentEventNotifer"/>
 
     <!--
@@ -55,4 +54,8 @@
           class="org.apache.activemq.camel.component.ActiveMQComponent">
         <property name="brokerURL" value="tcp://localhost:61616"/>
     </bean>
+
+    <bean id="dateTaskService" factory-bean="dateTaskFactory" factory-method="create"/>
+
+    <bean id="dateTaskFactory" class="nl.han.dateplanner.services.business.DateTaskFactory"/>
 </beans>

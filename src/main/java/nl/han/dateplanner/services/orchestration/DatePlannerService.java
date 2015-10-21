@@ -24,6 +24,7 @@ import org.apache.camel.*;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
 import org.apache.camel.spi.EventNotifier;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
@@ -37,38 +38,47 @@ import java.io.OutputStreamWriter;
  * (otherwise: http://localhost:8080/applyregistration.wsdl)
  */
 public class DatePlannerService extends RouteBuilder {
+
+    private final IDateTaskService dateTaskService;
+
+    @Autowired
+    public DatePlannerService(IDateTaskService dateTaskService) {
+        this.dateTaskService = dateTaskService;
+    }
+
     @Override
     public void configure() throws Exception {
-        JaxbDataFormat jaxb = new JaxbDataFormat(DatePlannerResponse.class.getPackage().getName());
+        System.out.println(dateTaskService.toString());
 
-        from("spring-ws:rootqname:{http://www.han.nl/schemas/dateplanner}DatePlannerRequest?endpointMapping=#datePlannerEndpointMapping")
-            .setExchangePattern(ExchangePattern.InOnly)
-                .to("activemq:FOO.BAR")
-            .setExchangePattern(ExchangePattern.InOut).end()
-
-            .unmarshal(jaxb)
-                .log(LoggingLevel.DEBUG, "nl.han.dateplanner", "Processing ${body}")
-                .process(new Echo())
-                .process(new JSONParser())
-            .marshal(jaxb)
-                .setExchangePattern(ExchangePattern.InOnly)
-                .to("activemq:FOO.BAR.BLA")
-                .setExchangePattern(ExchangePattern.InOut).end();
-
-        // Use camel event notifications
-        CamelContext context = getContext();
-        context.getManagementStrategy().addEventNotifier(new MyLoggingSentEventNotifer());
-        for (EventNotifier eventNotifier : context.getManagementStrategy().getEventNotifiers()) {
-            eventNotifier.setIgnoreExchangeSentEvents(false);
-            eventNotifier.setIgnoreExchangeCreatedEvent(false);
-        }
+//        JaxbDataFormat jaxb = new JaxbDataFormat(DatePlannerResponse.class.getPackage().getName());
+//
+//        from("spring-ws:rootqname:{http://www.han.nl/schemas/dateplanner}DatePlannerRequest?endpointMapping=#datePlannerEndpointMapping")
+//            .setExchangePattern(ExchangePattern.InOnly)
+//                .to("activemq:FOO.BAR")
+//            .setExchangePattern(ExchangePattern.InOut).end()
+//
+//                .unmarshal(jaxb)
+//                .log(LoggingLevel.DEBUG, "nl.han.dateplanner", "Processing ${body}")
+//                .process(new Echo())
+//                .process(new JSONParser())
+//            .marshal(jaxb)
+//                .setExchangePattern(ExchangePattern.InOnly)
+//                .to("activemq:FOO.BAR.BLA")
+//                .setExchangePattern(ExchangePattern.InOut).end();
+//
+//        // Use camel event notifications
+//        CamelContext context = getContext();
+//        context.getManagementStrategy().addEventNotifier(new MyLoggingSentEventNotifer());
+//        for (EventNotifier eventNotifier : context.getManagementStrategy().getEventNotifiers()) {
+//            eventNotifier.setIgnoreExchangeSentEvents(false);
+//            eventNotifier.setIgnoreExchangeCreatedEvent(false);
+//        }
     }
 
     private static final class Echo implements Processor {
         @Override
         public void process(Exchange exchange) throws Exception {
             DatePlannerRequest request = exchange.getIn().getBody(DatePlannerRequest.class);
-
             IDateTaskService task = new DateTaskFactory().create();
             exchange.getOut().setBody(task.getDateOption(request.getInput()));
         }
