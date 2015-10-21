@@ -20,11 +20,13 @@ import nl.han.dateplanner.DatePlannerRequest;
 import nl.han.dateplanner.DatePlannerResponse;
 import nl.han.dateplanner.services.business.DateTaskFactory;
 import nl.han.dateplanner.services.business.IDateTaskService;
+import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.converter.jaxb.JaxbDataFormat;
+import org.apache.camel.spi.EventNotifier;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
@@ -43,11 +45,22 @@ public class DatePlannerService extends RouteBuilder {
         JaxbDataFormat jaxb = new JaxbDataFormat(DatePlannerResponse.class.getPackage().getName());
 
         from("spring-ws:rootqname:{http://www.han.nl/schemas/dateplanner}DatePlannerRequest?endpointMapping=#datePlannerEndpointMapping")
+            .inOnly()
+                .to("file:C:\\camel_route_storage")
+            .inOut().end()
             .unmarshal(jaxb)
                 .log(LoggingLevel.DEBUG, "nl.han.dateplanner", "Processing ${body}")
                 .process(new Echo())
                 .process(new JSONParser())
             .marshal(jaxb);
+
+        // Use camel event notifications
+        CamelContext context = getContext();
+        context.getManagementStrategy().addEventNotifier(new MyLoggingSentEventNotifer());
+        for (EventNotifier eventNotifier : context.getManagementStrategy().getEventNotifiers()) {
+            eventNotifier.setIgnoreExchangeSentEvents(false);
+            eventNotifier.setIgnoreExchangeCreatedEvent(false);
+        }
     }
 
     private static final class Echo implements Processor {

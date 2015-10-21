@@ -44,6 +44,9 @@
         <property name="locationUri" value="http://localhost:8080/dateplanner"/>
     </bean>
 
+
+    <bean id="myLoggingEventNotifier" class="nl.han.dateplanner.services.orchestration.MyLoggingSentEventNotifer"/>
+
     <!--
         === ACTIVEMQ CONNECTOR ====
         Make sure ActiveMQ is running when you run this base project
