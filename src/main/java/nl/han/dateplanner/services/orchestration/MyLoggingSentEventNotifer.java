@@ -17,7 +17,6 @@ public class MyLoggingSentEventNotifer extends EventNotifierSupport {
             //log.info("Took " + sent.getTimeTaken() + " millis to send to: " + sent.getEndpoint());
             System.out.println("Took " + sent.getTimeTaken() + " millis to send to: " + sent.getEndpoint() + "\n");
 
-
         }
     }
 

@@ -3,7 +3,6 @@ package nl.han.dateplanner;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -22,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="places" type="{http://www.han.nl/schemas/dateplanner}PlaceType" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="request" type="{http://www.han.nl/schemas/dateplanner}DateOptions"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -32,15 +32,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "places"
+    "places",
+    "request"
 })
 @XmlRootElement(name = "DatePlannerResponse", namespace = "http://www.han.nl/schemas/dateplanner")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
 public class DatePlannerResponse {
 
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected List<PlaceType> places;
+    @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
+    protected DateOptions request;
 
     /**
      * Gets the value of the places property.
@@ -64,12 +65,35 @@ public class DatePlannerResponse {
      * 
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public List<PlaceType> getPlaces() {
         if (places == null) {
             places = new ArrayList<PlaceType>();
         }
         return this.places;
+    }
+
+    /**
+     * Gets the value of the request property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DateOptions }
+     *     
+     */
+    public DateOptions getRequest() {
+        return request;
+    }
+
+    /**
+     * Sets the value of the request property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DateOptions }
+     *     
+     */
+    public void setRequest(DateOptions value) {
+        this.request = value;
     }
 
 }

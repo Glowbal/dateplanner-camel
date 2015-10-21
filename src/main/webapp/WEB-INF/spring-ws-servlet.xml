@@ -9,9 +9,11 @@
     <!-- === Route(s) ==== -->
     <camel:camelContext id="camelContext">
         <camel:routeBuilder ref="datePlannerRoute"/>
+        <camel:routeBuilder ref="datePlannerCachingRoute"/>
     </camel:camelContext>
 
     <bean id="datePlannerRoute" class="nl.han.dateplanner.services.orchestration.DatePlannerService"/>
+    <bean id="datePlannerCachingRoute" class="nl.han.dateplanner.services.orchestration.DatePlannerCachingService"/>
 
     <!-- === Endpoint mapping(s) ==== -->
     <bean id="datePlannerEndpointMapping" class="org.apache.camel.component.spring.ws.bean.CamelEndpointMapping">

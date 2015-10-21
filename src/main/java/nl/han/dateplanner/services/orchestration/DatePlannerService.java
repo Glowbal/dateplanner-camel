@@ -37,13 +37,18 @@ import java.io.OutputStreamWriter;
  * (otherwise: http://localhost:8080/applyregistration.wsdl)
  */
 public class DatePlannerService extends RouteBuilder {
+
+    public DatePlannerService() {
+
+    }
+
     @Override
     public void configure() throws Exception {
         JaxbDataFormat jaxb = new JaxbDataFormat(DatePlannerResponse.class.getPackage().getName());
 
         from("spring-ws:rootqname:{http://www.han.nl/schemas/dateplanner}DatePlannerRequest?endpointMapping=#datePlannerEndpointMapping")
             .setExchangePattern(ExchangePattern.InOnly)
-                .to("activemq:FOO.BAR")
+                .to("activemq:datePlannerRequests")
             .setExchangePattern(ExchangePattern.InOut).end()
 
             .unmarshal(jaxb)
@@ -52,8 +57,9 @@ public class DatePlannerService extends RouteBuilder {
                 .process(new JSONParser())
             .marshal(jaxb)
                 .setExchangePattern(ExchangePattern.InOnly)
-                .to("activemq:FOO.BAR.BLA")
-                .setExchangePattern(ExchangePattern.InOut).end();
+                    .to("activemq:datePlannerMessages")
+                .setExchangePattern(ExchangePattern.InOut)
+            .end();
 
         // Use camel event notifications
         CamelContext context = getContext();
@@ -70,7 +76,10 @@ public class DatePlannerService extends RouteBuilder {
             DatePlannerRequest request = exchange.getIn().getBody(DatePlannerRequest.class);
 
             IDateTaskService task = new DateTaskFactory().create();
-            exchange.getOut().setBody(task.getDateOption(request.getInput()));
+            DatePlannerResponse response = task.getDateOption(request.getInput());
+            response.setRequest(request.getInput());
+
+            exchange.getIn().setBody(response);
         }
     }
 
@@ -78,6 +87,8 @@ public class DatePlannerService extends RouteBuilder {
         @Override
         public void process(Exchange exchange) throws Exception {
             DatePlannerResponse datePlannerResponse = exchange.getIn().getBody(DatePlannerResponse.class);
+            if (datePlannerResponse == null)
+                return;
 
             BufferedWriter logger = new BufferedWriter(new OutputStreamWriter(System.out));
 

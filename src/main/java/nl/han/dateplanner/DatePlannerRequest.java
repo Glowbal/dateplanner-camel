@@ -1,7 +1,6 @@
 
 package nl.han.dateplanner;
 
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -33,11 +32,9 @@ import javax.xml.bind.annotation.XmlType;
     "input"
 })
 @XmlRootElement(name = "DatePlannerRequest", namespace = "http://www.han.nl/schemas/dateplanner")
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
 public class DatePlannerRequest {
 
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected DateOptions input;
 
     /**
@@ -48,7 +45,6 @@ public class DatePlannerRequest {
      *     {@link DateOptions }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public DateOptions getInput() {
         return input;
     }
@@ -61,7 +57,6 @@ public class DatePlannerRequest {
      *     {@link DateOptions }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setInput(DateOptions value) {
         this.input = value;
     }

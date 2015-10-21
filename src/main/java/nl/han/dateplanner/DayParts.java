@@ -1,7 +1,6 @@
 
 package nl.han.dateplanner;
 
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlEnumValue;
 import javax.xml.bind.annotation.XmlType;
@@ -26,7 +25,6 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "DayParts", namespace = "http://www.han.nl/schemas/dateplanner")
 @XmlEnum
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
 public enum DayParts {
 
     @XmlEnumValue("morning")
