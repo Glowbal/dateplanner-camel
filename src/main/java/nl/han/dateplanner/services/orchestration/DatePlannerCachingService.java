@@ -21,15 +21,20 @@ public class DatePlannerCachingService {
 
     }
 
-    public boolean IsCached(String request) {
+    public boolean IsCached(DatePlannerRequest request) {
         return GetCached(request) != null;
     }
 
-    public String GetCached(String request) {
+    public String GetCached(DatePlannerRequest request) {
         for (String name : Files()) {
             String contents = ReadFile(name);
             if (contents != null) {
-                if (contents.contains(request))
+                boolean location = (contents.contains("<location>"+ request.getInput().getLocation() + "</location>"));
+                boolean radius = (contents.contains("<radius>"+ request.getInput().getRadius() + "</radius>"));
+                boolean dayPart = (contents.contains("<dayPart>"+ request.getInput().getDayPart() + "</dayPart>"));
+                boolean types = (contents.contains("<types>"+ request.getInput().getTypes() + "</types>"));
+
+                if (location && radius && dayPart && types)
                     return contents;
             }
         }
