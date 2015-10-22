@@ -12,7 +12,9 @@
         <camel:routeBuilder ref="datePlannerPersistenceRoute"/>
     </camel:camelContext>
 
-    <bean id="datePlannerRoute" class="nl.han.dateplanner.services.orchestration.DatePlannerService"/>
+    <bean id="datePlannerRoute" factory-bean="DatePlannerFactory" factory-method="create"/>
+    <bean id="DatePlannerFactory" class="nl.han.dateplanner.services.orchestration.DatePlannerFactory"/>
+
     <bean id="datePlannerPersistenceRoute" class="nl.han.dateplanner.services.orchestration.DatePlannerPersistenceService"/>
 
     <!-- === Endpoint mapping(s) ==== -->

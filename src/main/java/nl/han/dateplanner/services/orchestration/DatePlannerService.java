@@ -38,8 +38,10 @@ import java.io.OutputStreamWriter;
  */
 public class DatePlannerService extends RouteBuilder {
 
-    public DatePlannerService() {
+    IDateTaskService taskService;
 
+    public DatePlannerService(IDateTaskService taskService) {
+        this.taskService = taskService;
     }
 
     @Override
@@ -53,7 +55,7 @@ public class DatePlannerService extends RouteBuilder {
 
             .unmarshal(jaxb)
                 .log(LoggingLevel.DEBUG, "nl.han.dateplanner", "Processing ${body}")
-                .process(new Echo())
+                .process(new ProcessRequest(taskService))
                 .process(new JSONParser())
             .marshal(jaxb)
                 .setExchangePattern(ExchangePattern.InOnly)
@@ -70,13 +72,19 @@ public class DatePlannerService extends RouteBuilder {
         }
     }
 
-    private static final class Echo implements Processor {
+    private static final class ProcessRequest implements Processor {
+
+        private IDateTaskService service;
+
+        public ProcessRequest(IDateTaskService service) {
+            this.service = service;
+        }
+
         @Override
         public void process(Exchange exchange) throws Exception {
             DatePlannerRequest request = exchange.getIn().getBody(DatePlannerRequest.class);
 
-            IDateTaskService task = new DateTaskFactory().create();
-            DatePlannerResponse response = task.getDateOption(request.getInput());
+            DatePlannerResponse response = service.getDateOption(request.getInput());
             response.setRequest(request.getInput());
 
             exchange.getIn().setBody(response);

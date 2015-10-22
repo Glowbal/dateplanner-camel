@@ -11,7 +11,7 @@ public class ActiveMQTest extends CamelTestSupport {
 
     @Override
     protected RouteBuilder createRouteBuilder() throws Exception {
-        return new DatePlannerService(/*new TestDateTaskService()*/);
+        return new DatePlannerPersistenceService();
     }
 
     @BeforeClass
@@ -24,7 +24,7 @@ public class ActiveMQTest extends CamelTestSupport {
 
     @Test
     public void testActiveMQ() throws Exception {
-        template.sendBody("activemq:FOO.BAR", "HelloWorld!");
+        template.sendBody("activemq:datePlannerMessages", "HelloWorld!");
         Thread.sleep(3000);
     }
 
