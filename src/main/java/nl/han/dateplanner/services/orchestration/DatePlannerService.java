@@ -56,7 +56,6 @@ public class DatePlannerService extends RouteBuilder {
             .unmarshal(jaxb)
                 .log(LoggingLevel.DEBUG, "nl.han.dateplanner", "Processing ${body}")
                 .process(new ProcessRequest(taskService))
-                .process(new JSONParser())
             .marshal(jaxb)
                 .setExchangePattern(ExchangePattern.InOnly)
                     .to("activemq:datePlannerMessages")
@@ -88,20 +87,6 @@ public class DatePlannerService extends RouteBuilder {
             response.setRequest(request.getInput());
 
             exchange.getIn().setBody(response);
-        }
-    }
-
-    private static final class JSONParser implements Processor {
-        @Override
-        public void process(Exchange exchange) throws Exception {
-            DatePlannerResponse datePlannerResponse = exchange.getIn().getBody(DatePlannerResponse.class);
-            if (datePlannerResponse == null)
-                return;
-
-            BufferedWriter logger = new BufferedWriter(new OutputStreamWriter(System.out));
-
-            logger.write("Number of places: " + datePlannerResponse.getPlaces().size());
-            logger.close();
         }
     }
 }

@@ -8,7 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class ActiveMQTest extends CamelTestSupport {
-
+/*
     @Override
     protected RouteBuilder createRouteBuilder() throws Exception {
         return new DatePlannerPersistenceService();
@@ -19,7 +19,7 @@ public class ActiveMQTest extends CamelTestSupport {
         /*BrokerService brokerSvc = new BrokerService();
         brokerSvc.setBrokerName("TestBroker");
         brokerSvc.addConnector("tcp://localhost:61616");
-        brokerSvc.start();*/
+        brokerSvc.start();
     }
 
     @Test
@@ -27,5 +27,5 @@ public class ActiveMQTest extends CamelTestSupport {
         template.sendBody("activemq:datePlannerMessages", "HelloWorld!");
         Thread.sleep(3000);
     }
-
+*/
 }
