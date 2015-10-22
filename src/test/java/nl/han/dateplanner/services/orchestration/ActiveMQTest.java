@@ -16,10 +16,10 @@ public class ActiveMQTest extends CamelTestSupport {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        BrokerService brokerSvc = new BrokerService();
+        /*BrokerService brokerSvc = new BrokerService();
         brokerSvc.setBrokerName("TestBroker");
         brokerSvc.addConnector("tcp://localhost:61616");
-        brokerSvc.start();
+        brokerSvc.start();*/
     }
 
     @Test
