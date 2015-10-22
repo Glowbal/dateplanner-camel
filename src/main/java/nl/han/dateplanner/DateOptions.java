@@ -2,7 +2,6 @@
 package nl.han.dateplanner;
 
 import java.math.BigDecimal;
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -38,20 +37,15 @@ import javax.xml.bind.annotation.XmlType;
     "dayPart",
     "types"
 })
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
 public class DateOptions {
 
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected String location;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected BigDecimal radius;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected DayParts dayPart;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected PlaceTypes types;
 
     /**
@@ -62,7 +56,6 @@ public class DateOptions {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public String getLocation() {
         return location;
     }
@@ -75,7 +68,6 @@ public class DateOptions {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setLocation(String value) {
         this.location = value;
     }
@@ -88,7 +80,6 @@ public class DateOptions {
      *     {@link BigDecimal }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public BigDecimal getRadius() {
         return radius;
     }
@@ -101,7 +92,6 @@ public class DateOptions {
      *     {@link BigDecimal }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setRadius(BigDecimal value) {
         this.radius = value;
     }
@@ -114,7 +104,6 @@ public class DateOptions {
      *     {@link DayParts }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public DayParts getDayPart() {
         return dayPart;
     }
@@ -127,7 +116,6 @@ public class DateOptions {
      *     {@link DayParts }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setDayPart(DayParts value) {
         this.dayPart = value;
     }
@@ -140,7 +128,6 @@ public class DateOptions {
      *     {@link PlaceTypes }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public PlaceTypes getTypes() {
         return types;
     }
@@ -153,7 +140,6 @@ public class DateOptions {
      *     {@link PlaceTypes }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setTypes(PlaceTypes value) {
         this.types = value;
     }

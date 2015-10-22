@@ -2,7 +2,6 @@
 package nl.han.dateplanner;
 
 import java.math.BigDecimal;
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,36 +49,26 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "date",
     "forecast"
 })
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
 public class PlaceType {
 
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected String name;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected String placeId;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected BigDecimal latitude;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected BigDecimal longitude;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected String type;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected String vicinity;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected String openingHours;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
     @XmlSchemaType(name = "dateTime")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected XMLGregorianCalendar date;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner", required = true)
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected ForecastType forecast;
 
     /**
@@ -90,7 +79,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public String getName() {
         return name;
     }
@@ -103,7 +91,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setName(String value) {
         this.name = value;
     }
@@ -116,7 +103,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public String getPlaceId() {
         return placeId;
     }
@@ -129,7 +115,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setPlaceId(String value) {
         this.placeId = value;
     }
@@ -142,7 +127,6 @@ public class PlaceType {
      *     {@link BigDecimal }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public BigDecimal getLatitude() {
         return latitude;
     }
@@ -155,7 +139,6 @@ public class PlaceType {
      *     {@link BigDecimal }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setLatitude(BigDecimal value) {
         this.latitude = value;
     }
@@ -168,7 +151,6 @@ public class PlaceType {
      *     {@link BigDecimal }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public BigDecimal getLongitude() {
         return longitude;
     }
@@ -181,7 +163,6 @@ public class PlaceType {
      *     {@link BigDecimal }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setLongitude(BigDecimal value) {
         this.longitude = value;
     }
@@ -194,7 +175,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public String getType() {
         return type;
     }
@@ -207,7 +187,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setType(String value) {
         this.type = value;
     }
@@ -220,7 +199,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public String getVicinity() {
         return vicinity;
     }
@@ -233,7 +211,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setVicinity(String value) {
         this.vicinity = value;
     }
@@ -246,7 +223,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public String getOpeningHours() {
         return openingHours;
     }
@@ -259,7 +235,6 @@ public class PlaceType {
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setOpeningHours(String value) {
         this.openingHours = value;
     }
@@ -272,7 +247,6 @@ public class PlaceType {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public XMLGregorianCalendar getDate() {
         return date;
     }
@@ -285,7 +259,6 @@ public class PlaceType {
      *     {@link XMLGregorianCalendar }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setDate(XMLGregorianCalendar value) {
         this.date = value;
     }
@@ -298,7 +271,6 @@ public class PlaceType {
      *     {@link ForecastType }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public ForecastType getForecast() {
         return forecast;
     }
@@ -311,7 +283,6 @@ public class PlaceType {
      *     {@link ForecastType }
      *     
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setForecast(ForecastType value) {
         this.forecast = value;
     }

@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRegistry;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the nl.han.dare2date package. 
+ * generated in the nl.han.dateplanner package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -23,7 +23,7 @@ public class ObjectFactory {
 
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: nl.han.dare2date
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: nl.han.dateplanner
      * 
      */
     public ObjectFactory() {
@@ -46,19 +46,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DatePlannerRequest }
-     * 
-     */
-    public DatePlannerRequest createDatePlannerRequest() {
-        return new DatePlannerRequest();
-    }
-
-    /**
      * Create an instance of {@link DateOptions }
      * 
      */
     public DateOptions createDateOptions() {
         return new DateOptions();
+    }
+
+    /**
+     * Create an instance of {@link DatePlannerRequest }
+     * 
+     */
+    public DatePlannerRequest createDatePlannerRequest() {
+        return new DatePlannerRequest();
     }
 
     /**

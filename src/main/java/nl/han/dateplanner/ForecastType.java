@@ -1,7 +1,6 @@
 
 package nl.han.dateplanner;
 
-import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -41,33 +40,25 @@ import javax.xml.bind.annotation.XmlType;
     "snow",
     "clouds"
 })
-@Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
 public class ForecastType {
 
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected float temperature;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected float minTemperature;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected float maxTemperature;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected float rain;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected float snow;
     @XmlElement(namespace = "http://www.han.nl/schemas/dateplanner")
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     protected float clouds;
 
     /**
      * Gets the value of the temperature property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public float getTemperature() {
         return temperature;
     }
@@ -76,7 +67,6 @@ public class ForecastType {
      * Sets the value of the temperature property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setTemperature(float value) {
         this.temperature = value;
     }
@@ -85,7 +75,6 @@ public class ForecastType {
      * Gets the value of the minTemperature property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public float getMinTemperature() {
         return minTemperature;
     }
@@ -94,7 +83,6 @@ public class ForecastType {
      * Sets the value of the minTemperature property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setMinTemperature(float value) {
         this.minTemperature = value;
     }
@@ -103,7 +91,6 @@ public class ForecastType {
      * Gets the value of the maxTemperature property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public float getMaxTemperature() {
         return maxTemperature;
     }
@@ -112,7 +99,6 @@ public class ForecastType {
      * Sets the value of the maxTemperature property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setMaxTemperature(float value) {
         this.maxTemperature = value;
     }
@@ -121,7 +107,6 @@ public class ForecastType {
      * Gets the value of the rain property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public float getRain() {
         return rain;
     }
@@ -130,7 +115,6 @@ public class ForecastType {
      * Sets the value of the rain property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setRain(float value) {
         this.rain = value;
     }
@@ -139,7 +123,6 @@ public class ForecastType {
      * Gets the value of the snow property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public float getSnow() {
         return snow;
     }
@@ -148,7 +131,6 @@ public class ForecastType {
      * Sets the value of the snow property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setSnow(float value) {
         this.snow = value;
     }
@@ -157,7 +139,6 @@ public class ForecastType {
      * Gets the value of the clouds property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public float getClouds() {
         return clouds;
     }
@@ -166,7 +147,6 @@ public class ForecastType {
      * Sets the value of the clouds property.
      * 
      */
-    @Generated(value = "com.sun.tools.internal.xjc.Driver", date = "2015-10-19T11:43:52+02:00", comments = "JAXB RI v2.2.4-2")
     public void setClouds(float value) {
         this.clouds = value;
     }

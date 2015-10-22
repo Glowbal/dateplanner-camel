@@ -11,7 +11,7 @@ public class ActiveMQTest extends CamelTestSupport {
 
     @Override
     protected RouteBuilder createRouteBuilder() throws Exception {
-        return new DatePlannerService(new TestDateTaskService());
+        return new DatePlannerService(/*new TestDateTaskService()*/);
     }
 
     @BeforeClass
